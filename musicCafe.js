@@ -2,7 +2,7 @@ const musicCafe ={
     _customerPurchase:[
         {name: 'Barry', purchase: 'Mocha Latte', price: 3.50},
         {name: 'Riley', purchase: 'Cappuccino', price: 4.00},
-        {name: 'Blake', purchase: 'Expresso', price: 4.00},
+        {name: 'Blake', purchase: 'Expresso', price: 3.50},
         {name: 'Taylor', purchase: 'Hazelnut Latte', price: 4.50},
         {name: 'Penny', purchase: 'Dalgonna Coffee', price: 4.00}
     ],
@@ -22,7 +22,7 @@ const musicCafe ={
       },
 
     addCustomerPurchase(name,purchase,price){
-        let customerPurchase = {
+        const customerPurchase = {
             name: name,
             purchase: purchase,
             price: price
@@ -39,12 +39,10 @@ const musicCafe ={
     }
 };
 
-musicCafe.addCustomerPurchase('Alex', 'Vanilla Latte', 4.00);
+musicCafe.addCustomerPurchase('Alex', 'Vanilla Latte', 3.50);
 musicCafe.addCustomerPurchase('Drew', 'Caramel Mocha', 4.00);
 
 musicCafe.addMusicSelection('Crush', 'From Midnight to Sunrise', 'RnB');
 musicCafe.addMusicSelection('Brahny', 'moon', 'Indie');
 
-
-console.log(musicCafe.musicSelection);
 console.log(musicCafe.customerPurchase);
