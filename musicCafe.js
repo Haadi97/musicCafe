@@ -14,16 +14,20 @@ const musicCafe ={
         {artistName: 'Twice', artistAlbum: 'Formula of Love: O+T=<3', genre:'Pop'}
     ],
 
+
     get customerPurchase(){
         return this._customerPurchase;
     },
     get musicSelection(){
         return this._musicSelection;
       },
+    set customerPurchase(newCustomerPurchase){
+        return this._customerPurchase = newCustomerPurchase;
+    },
 
     addCustomerPurchase(name,purchase,price){
-        const customerPurchase = {
-            name: name,
+        let customerPurchase = {
+            name,
             purchase: purchase,
             price: price
         };
@@ -34,10 +38,19 @@ const musicCafe ={
             artistName: artistName,
             artistAlbum: artistAlbum,
             genre: genre
-        }
+        };
         this.musicSelection.push(musicSelection);
+    },
+    
+    removeCustomerPurchase(purchaseName){
+        const updatedCustomerPurchase = this.customerPurchase.filter(purchaseOrder => {
+            return purchaseOrder.purchase !== purchaseName;
+        });
+        this.customerPurchase = updatedCustomerPurchase;
+        console.log(this.customerPurchase);
     }
 };
+
 
 musicCafe.addCustomerPurchase('Alex', 'Vanilla Latte', 3.50);
 musicCafe.addCustomerPurchase('Drew', 'Caramel Mocha', 4.00);
@@ -45,4 +58,6 @@ musicCafe.addCustomerPurchase('Drew', 'Caramel Mocha', 4.00);
 musicCafe.addMusicSelection('Crush', 'From Midnight to Sunrise', 'RnB');
 musicCafe.addMusicSelection('Brahny', 'moon', 'Indie');
 
-console.log(musicCafe.customerPurchase);
+musicCafe.removeCustomerPurchase('Expresso');
+
+
