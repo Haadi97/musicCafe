@@ -21,9 +21,7 @@ const musicCafe ={
     get musicSelection(){
         return this._musicSelection;
       },
-    set customerPurchase(newCustomerPurchase){
-        return this._customerPurchase = newCustomerPurchase;
-    },
+    
 
     addCustomerPurchase(name,purchase,price){
         let customerPurchase = {
@@ -42,11 +40,19 @@ const musicCafe ={
         this.musicSelection.push(musicSelection);
     },
     
-    removeCustomerPurchase(purchaseName){
-        const updatedCustomerPurchase = this.customerPurchase.filter(purchaseOrder => {
-            return purchaseOrder.purchase !== purchaseName;
+    // removeCustomerPurchase(purchaseName){
+    //     const updatedCustomerPurchase = this.customerPurchase.filter(purchaseOrder => {
+    //         return purchaseOrder.purchase !== purchaseName;
+    //     });
+    //     this.customerPurchase = updatedCustomerPurchase;
+    //     console.log(this.customerPurchase);
+    // }
+
+    removeCustomerPurchase(purchase, name){
+        this._customerPurchase = this.customerPurchase.filter(purchaseOrder => {
+            if(purchaseOrder.purchase === purchase || purchaseOrder === name);
+               {return purchaseOrder.purchase !== purchase && purchaseOrder.name !== name;}
         });
-        this.customerPurchase = updatedCustomerPurchase;
         console.log(this.customerPurchase);
     }
 };
@@ -54,10 +60,11 @@ const musicCafe ={
 
 musicCafe.addCustomerPurchase('Alex', 'Vanilla Latte', 3.50);
 musicCafe.addCustomerPurchase('Drew', 'Caramel Mocha', 4.00);
+musicCafe.addCustomerPurchase('Penny', 'Expresso', 3.50);
+musicCafe.addCustomerPurchase('Barry', 'Cappuccino', 4.00);
+musicCafe.addCustomerPurchase('Taylor', 'Cappuccino', 4.00);
 
 musicCafe.addMusicSelection('Crush', 'From Midnight to Sunrise', 'RnB');
 musicCafe.addMusicSelection('Brahny', 'moon', 'Indie');
 
-musicCafe.removeCustomerPurchase('Expresso');
-
-
+musicCafe.removeCustomerPurchase('Expresso', 'Taylor');
