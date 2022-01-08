@@ -9,7 +9,7 @@ const musicCafe ={
     _musicSelection:[
         {artistName: 'Nujabes', artistAlbum: 'Modal Soul', genre:'Hip-Hop'},
         {artistName: 'Daniel Caesar', artistAlbum: 'Freudian', genre:'RnB'},
-        {artistName: 'Herb Ellis &  Remo Palmier', artistAlbum: 'Windflower', genre:'Jazz'},
+        {artistName: 'Herb Ellis &  Remo Palmier', artistdxcvAlbum: 'Windflower', genre:'Jazz'},
         {artistName: 'Meltt', artistAlbum: 'Swim Slowly', genre:'Indie Rock'},
         {artistName: 'Twice', artistAlbum: 'Formula of Love: O+T=<3', genre:'Pop'}
     ],
@@ -48,15 +48,21 @@ const musicCafe ={
     //     console.log(this.customerPurchase);
     // }
 
-    removeCustomerPurchase(purchase, name){
-        this._customerPurchase = this.customerPurchase.filter(purchaseOrder => {
-            if(purchaseOrder.purchase === purchase || purchaseOrder === name);
-               {return purchaseOrder.purchase !== purchase && purchaseOrder.name !== name;}
-        });
-        console.log(this.customerPurchase);
-    }
-};
+    retrieveCustomerPurchase(name, purchase){
+        var customerOrder = this._customerPurchase.filter(purchaseOrder => 
+            purchaseOrder.name == name ||
+            purchaseOrder.purchase == purchase
+        );
+        console.log(customerOrder);
+    },
 
+    removeCustomerPurchase(name, purchase){
+        var updatedCustomerOrder =  this._customerPurchase.filter(purchaseOrder => 
+            purchaseOrder.name != name || purchaseOrder.purchase != purchase
+        )
+        console.log(updatedCustomerOrder);
+    }
+}
 
 musicCafe.addCustomerPurchase('Alex', 'Vanilla Latte', 3.50);
 musicCafe.addCustomerPurchase('Drew', 'Caramel Mocha', 4.00);
@@ -67,4 +73,5 @@ musicCafe.addCustomerPurchase('Taylor', 'Cappuccino', 4.00);
 musicCafe.addMusicSelection('Crush', 'From Midnight to Sunrise', 'RnB');
 musicCafe.addMusicSelection('Brahny', 'moon', 'Indie');
 
-musicCafe.removeCustomerPurchase('Expresso', 'Taylor');
+musicCafe.retrieveCustomerPurchase('Taylor', 'Expresso');
+musicCafe.removeCustomerPurchase('Taylor', 'Cappuccino');
