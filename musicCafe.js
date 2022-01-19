@@ -57,12 +57,12 @@ const musicCafe = {
   retrieveCustomerPurchase(name) {
     let specificCustomerOrder = [];
     this._customerPurchase.forEach((customerOrder) => {
-      if (customerOrder.name !== name) {
-        return customerOrder.purchase || customerOrder.price;
+      if (customerOrder.name === name) {
+        specificCustomerOrder.push(customerOrder.purchase, customerOrder.price);
       }
-      specificCustomerOrder.push(customerOrder);
     });
-    console.log(specificCustomerOrder);
+    //console.log(specificCustomerOrder);
+    return specificCustomerOrder;
   },
 
   removeCustomerPurchase(name, purchase) {
@@ -79,10 +79,11 @@ musicCafe.addCustomerPurchase("Drew", "Caramel Mocha", 4.0);
 musicCafe.addCustomerPurchase("Penny", "Expresso", 3.5);
 musicCafe.addCustomerPurchase("Barry", "Cappuccino", 4.0);
 musicCafe.addCustomerPurchase("Taylor", "Cappuccino", 4.0);
+musicCafe.addCustomerPurchase("Blake", "Dalgonna Coffee", 4.0);
 
 musicCafe.addMusicSelection("Crush", "From Midnight to Sunrise", "RnB");
 musicCafe.addMusicSelection("Brahny", "moon", "Indie");
 
 musicCafe.removeCustomerPurchase("Penny", "Expresso");
 
-musicCafe.retrieveCustomerPurchase("Barry");
+musicCafe.retrieveCustomerPurchase("Blake");
