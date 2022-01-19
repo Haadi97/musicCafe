@@ -58,10 +58,13 @@ const musicCafe = {
     let specificCustomerOrder = [];
     this._customerPurchase.forEach((customerOrder) => {
       if (customerOrder.name === name) {
-        specificCustomerOrder.push(customerOrder.purchase, customerOrder.price);
+        specificCustomerOrder.push({
+          purchase: customerOrder.purchase,
+          price: customerOrder.price,
+        });
       }
     });
-    //console.log(specificCustomerOrder);
+    console.log(specificCustomerOrder);
     return specificCustomerOrder;
   },
 
